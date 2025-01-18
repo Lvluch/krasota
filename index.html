@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>krasota</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIF and Sound Example</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        img {
+            width: 80%;
+            max-width: 600px;
+        }
+        audio {
+            display: none;
+        }
+    </style>
 </head>
-<body style="margin: 0; overflow: hidden;">
-    <iframe src="https://www.youtube.com/embed/w1KNiud5fpQ?autoplay=1&controls=0&showinfo=0&rel=0" 
-            width="100%" 
-            height="100%" 
-            allow="autoplay; encrypted-media" 
-            frameborder="0">
-    </iframe>
+<body>
+    <!-- Гифка из Tenor -->
+    <img src="https://media.tenor.com/images/ee1d8d4ff406f2990e79837025b29e3c/tenor.gif" alt="Gif Example">
+
+    <!-- Звук из Freesound -->
+    <audio autoplay>
+        <source src="https://www.freesound.org/data/previews/69/69637_1289891-lq.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
+    </audio>
+
+    <script>
+        // Автоматически включаем звук и полноэкранный режим
+        const audio = document.querySelector('audio');
+        audio.play();
+
+        // Пытаться автоматически запустить видео или изображение в полноэкранном режиме (если нужно)
+        const img = document.querySelector('img');
+        img.onclick = function() {
+            if (img.requestFullscreen) {
+                img.requestFullscreen();
+            } else if (img.mozRequestFullScreen) {
+                img.mozRequestFullScreen();
+            } else if (img.webkitRequestFullscreen) {
+                img.webkitRequestFullscreen();
+            }
+        };
+    </script>
 </body>
 </html>
