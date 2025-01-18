@@ -18,6 +18,7 @@
         img {
             width: 80%;
             max-width: 600px;
+            cursor: pointer;
         }
         audio {
             display: none;
@@ -26,20 +27,20 @@
 </head>
 <body>
     <!-- Гифка из Tenor -->
-    <img src="https://tenor.com/ru/view/funny-very-sloth-slow-gif-15401812" alt="Gif Example">
+    <img src="https://media.tenor.com/images/d9375d7889e0b73c1b998fc0e79c6238/tenor.gif" alt="Gif Example">
 
     <!-- Звук из Freesound -->
     <audio autoplay>
-        <source src="https://freesound.org/people/kevp888/sounds/785667/" type="audio/mpeg">
+        <source src="https://freesound.org/data/previews/78/5677_1467108-lq.mp3" type="audio/mpeg">
         Ваш браузер не поддерживает аудио.
     </audio>
 
     <script>
-        // Автоматически включаем звук и полноэкранный режим
+        // Автоматически включаем звук (но браузер может блокировать автозапуск)
         const audio = document.querySelector('audio');
-        audio.play();
+        audio.play().catch(e => console.log('Автозапуск аудио заблокирован браузером'));
 
-        // Пытаться автоматически запустить видео или изображение в полноэкранном режиме (если нужно)
+        // Пытаться автоматически запустить полноэкранный режим
         const img = document.querySelector('img');
         img.onclick = function() {
             if (img.requestFullscreen) {
